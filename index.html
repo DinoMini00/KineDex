@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="KineDex: Learning Tactile-Informed Visuomotor Policies via Kinesthetic Teaching for Dexterous Manipulation">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KineDex: Learning Tactile-Informed Visuomotor Policies via Kinesthetic Teaching for Dexterous Manipulation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">KineDex: Learning Tactile-Informed Visuomotor Policies via Kinesthetic Teaching for Dexterous Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/DinoMini00">Di Zhang</a><sup>1,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://michaelyuancb.github.io/">Chengbo Yuan</a><sup>2,5,6</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://alvinwen428.github.io/">Chuan Wen</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://betray12138.github.io/resume/">Hai Zhang</a><sup>4,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://cs1.tongji.edu.cn/~junqiao/">Junqiao Zhao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://people.iiis.tsinghua.edu.cn/~gaoyang/">Yang Gao</a><sup>2,5,6</sup><sup>*</sup>
+            </span>
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tongji University,</span>
+            <span class="author-block"><sup>2</sup>Tsinghua University,</span>
+            <span class="author-block"><sup>3</sup>Shanghai Jiao Tong University,</span>
+            <span class="author-block"><sup>4</sup>University of Hong Kong,</span>
+            <span class="author-block"><sup>5</sup>Shanghai Qi Zhi Institute,</span>
+            <span class="author-block"><sup>6</sup>Shanghai AI Lab</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=5crYuYNGIY4"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/DinoMini00/KineDex_code"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <img src="./static/images/teaser.png" alt="Teaser Image" style="max-width: 100%; height: auto;" />
+      <h2 class="subtitle has-text-centered">
+        We present <b>KineDex</b>, a framework for collecting tactile-enriched demonstrations via kinesthetic teaching and training tactile-informed visuomotor policies for dexterous manipulation.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Bottle-Picking.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered has-text-weight-semibold mt-2">Bottle Picking</p>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Cap-Twisting.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Charger-Plugging.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Cup-Picking.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Egg-Picking.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Nut-Tightening.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Peg-Insertion.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Syringe-Pressing.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demos/Toothpaste-Squeezing.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Collecting demonstrations enriched with fine-grained tactile information is critical for dexterous manipulation, particularly in contact-rich tasks that require precise force control and physical interaction. While prior works primarily focus on teleoperation or video-based retargeting, they often suffer from kinematic mismatches and the absence of real-time tactile feedback, hindering the acquisition of high-fidelity tactile data. To mitigate this issue, we propose <b>KineDex</b>, a hand-over-hand kinesthetic teaching paradigm in which the operator's motion is directly transferred to the dexterous hand, enabling the collection of physically grounded demonstrations enriched with accurate tactile feedback. To resolve occlusions from human hand, we apply inpainting technique to preprocess the visual observations. Based on these demonstrations, we then train a visuomotor policy using tactile-augmented inputs and implement force control during deployment for precise contact-rich manipulation. We evaluate KineDex on a suite of challenging contact-rich manipulation tasks, including particularly difficult scenarios such as squeezing toothpaste onto a toothbrush, which require precise multi-finger coordination and stable force regulation. Across these tasks, KineDex achieves an average success rate of 74.4%, representing a 57.7% improvement over the variant without force control. Comparative experiments with teleoperation and user studies further validate the advantages of KineDex in data collection efficiency and operability. Specifically, KineDex collects data over twice as fast as teleoperation across two tasks of varying difficulty, while maintaining a near-100% success rate, compared to under 50% for teleoperation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/5crYuYNGIY4?si=l0eQyI8xd2FUE-Yz"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- 第一行：标题 -->
+    <div class="has-text-centered">
+      <h2 class="title is-3">Method</h2>
+    </div>
+
+    <!-- 第二行：图片 + 说明 -->
+    <div class="content has-text-left mt-5">
+      <figure class="image mb-2">
+        <img src="./static/images/pipline.png" alt="Method Pipeline" style="max-width: 100%; height: auto;">
+      </figure>
+      <p>
+        KineDex collects tactile-enriched demonstrations via kinesthetic teaching, where visual occlusions from the operator's hand are removed through inpainting before policy training. The learned policy takes visual and tactile inputs to predict joint positions and contact forces, which are executed with force control for robust manipulation.
+      </p>
+    </div>
+
+    <!-- 第三行：三列视频展示 -->
+    <div class="columns mt-6">
+
+      <!-- 第一列 -->
+      <div class="column has-text-centered">
+        <h3 class="title is-4">Raw Demonstration</h3>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/inapinting/raw-1.mp4" type="video/mp4">
+        </video>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/inapinting/raw-2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 第二列 -->
+      <div class="column has-text-centered">
+        <h3 class="title is-4">Masked Demonstration</h3>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/inapinting/mask-1.mp4" type="video/mp4">
+        </video>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/inapinting/mask-2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 第三列 -->
+      <div class="column has-text-centered">
+        <h3 class="title is-4">Inpainted Demonstration</h3>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/inapinting/inpainted-1.mp4" type="video/mp4">
+        </video>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/inapinting/inpainted-2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- 实验标题：Experiment -->
+    <div class="has-text-centered">
+      <h2 class="title is-3">Experiment</h2>
+    </div>
+
+    <!-- Performance Evaluation -->
+    <h3 class="title is-4 has-text-left mt-5">Performance Evaluation</h3>
+
+    <!-- 表格图片 -->
+    <div class="content has-text-left mt-1">
+      <figure class="image mb-2">
+        <img src="./static/images/table.png" alt="Method Pipeline" style="max-width: 100%; height: auto;">
+      </figure>
+      <p>
+        Kinesthetic demonstrations effectively support visuomotor policy learning across a wide range of daily manipulation tasks, owing to their natural alignment with human behavior and the availability of accurate tactile and force feedback.
+      </p>
+    </div>
+
+    <div class="content has-text-left mt-1">
+      <figure class="image mb-2">
+        <img src="./static/images/compare.png" alt="Method Pipeline" style="max-width: 100%; height: auto;">
+      </figure>
+      <p>
+        Visualization of <span style="color: #1f77b4;">predicted</span> and 
+        <span style="color: #ff7f0e;">sensed</span> forces at the thumb during task execution, 
+        comparing the force-informed policy and the variant without force control.
+      </p>
+    </div>
+
+    <div class="columns mt-2">
+
+      <!-- 第一列 -->
+      <div class="column has-text-centered">
+        <h3 class="title is-4">Charger Plugging</h3>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/without-force-control/Charger-Plugging.mp4" type="video/mp4">
+        </video>
+      </div>
+    
+      <!-- 第二列 -->
+      <div class="column has-text-centered">
+        <h3 class="title is-4">Egg Picking</h3>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/without-force-control/Egg-Picking.mp4" type="video/mp4">
+        </video>
+      </div>
+    
+      <!-- 第三列 -->
+      <div class="column has-text-centered">
+        <h3 class="title is-4">Peg Insertion</h3>
+        <video controls muted autoplay loop playsinline width="100%">
+          <source src="./static/videos/without-force-control/Peg-Insertion.mp4" type="video/mp4">
+        </video>
+      </div>
+    
+    </div>
+    
+    <!-- 段落文字放在 columns 外部 -->
+    <div class="content has-text-centered mt-3">
+      <p>
+        Some failure cases when removing force control.
+      </p>
+    </div>
+
+    <!-- Efficiency Evaluation -->
+    <h3 class="title is-4 has-text-left mt-5">Efficiency Evaluation</h3>
+
+    <div class="content has-text-left mt-5">
+      <figure class="image mb2">
+        <img src="./static/images/efficiency.png" alt="Method Pipeline" style="max-width: 100%; height: auto;">
+      </figure>
+      <p>
+        Comparison of demonstration collection time between <b>KineDex</b> and teleoperation on the Bottle Picking and Syringe Pressing.
+      </p>
+    </div>
+
+    <!-- User Study -->
+    <h3 class="title is-4 has-text-left mt-6">User Study</h3>
+
+    <div class="content has-text-left mt-5">
+      <figure class="image">
+        <img src="./static/images/user.png" alt="Method Pipeline" style="max-width: 100%; height: auto;">
+      </figure>
+      <p>
+        Summary of user study results. Five participants used both the teleoperation system and <b>KineDex</b> to collect demonstrations. Pie charts summarize their feedback on key evaluation criteria.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre> -->
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+      <div class="content has-text-centered">
+          <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a>.</p>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>
